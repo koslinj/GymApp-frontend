@@ -1,0 +1,46 @@
+.exercise{
+    background-color: rgba(255, 255, 255, 0.247);
+    border: 2px solid black;
+    width: 260px;
+    padding: 6px 6px 20px 6px;
+    margin: 10px;
+    border-radius: 16px;
+    font-size: 20px;
+}
+.exercise div{
+    margin-top: 10px;
+}
+.exercise .no{
+    background-color: rgba(180, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.exercise .info{
+    font-style: italic;
+    font-weight: 600;
+    background-color: rgba(255, 0, 0, 0.247);
+    padding: 6px;
+    border-radius: 8px;
+}
+.exercise button{
+    margin: 10px 14px 0px 14px;
+    width: 80px;
+    height: 50px;
+    font-size: 24px;
+    background-color: lightcoral;
+    border: none;
+    border-radius: 6px;
+}
+.exercise .edit{
+    background-color: rgb(35, 83, 255);
+}
