@@ -1,6 +1,7 @@
-import '../../App.css'
+import './Exercises.css'
 import Exercise from "../Exercises/Exercise"
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from '../../axios';
 import NewExercise from '../Exercises/NewExercise';
 
@@ -11,19 +12,26 @@ function Exercises() {
   const [showEditModal, setShowEditModal] = useState(false)
   const [showNewExercise, setShowNewExercise] = useState(false)
 
+  const params = useParams();
+
   useEffect(() => {
     fetchNotes();
     console.log("started");
   }, []);
 
-  useEffect(() => {
-    console.log("changed");
-  }, [editExercise]);
-
   async function fetchNotes() {
     const res = await axios.get('/exercises');
-    const ex = res.data;
-    setExercises(ex);
+    const exers = res.data;
+
+    let tab = [];
+  
+    exers.forEach(ex => {
+      if (ex.training_id === params.id) {
+        tab.push(ex);
+      }
+    });
+
+    setExercises(tab);
   }
 
   async function deleteExercise(id) {

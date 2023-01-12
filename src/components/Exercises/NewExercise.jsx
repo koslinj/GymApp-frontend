@@ -1,8 +1,11 @@
 import { useState } from "react"
+import { useParams } from 'react-router-dom';
 import React from 'react'
-import './Exercise.css'
+import './Exercises.css'
 
 function NewExercise(props) {
+
+    const params = useParams();
 
     const [name, setName] = useState('')
     const [sets, setSets] = useState('')
@@ -16,7 +19,8 @@ function NewExercise(props) {
             sets: sets,
             reps: reps,
             weight: weight,
-            info: info
+            info: info,
+            training_id: params.id 
         }
         props.onAdd(exercise);
         props.hide();
