@@ -1,9 +1,18 @@
 import React from 'react'
 import Exercises from './components/Exercises/Exercises'
+import { Route, Routes, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div><Exercises/></div>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <p>Treningi</p>
+          <Link to="/exercise"><button>Click</button></Link>
+        </>
+      } />
+      <Route path="/exercise" element={<Exercises />} />
+    </Routes>
   )
 }
 
