@@ -20,11 +20,11 @@ function Exercise(props) {
     return (
         <div className="exercise">
             <div className="no">{props.no}</div>
-            <h2 className="name">{props.name}</h2>
+            <h3 className="name">{props.name}</h3>
             <div className="sets">{props.sets} serie</div>
             <div className="reps">{props.reps} powtórzenia</div>
             <div className="weight">{props.weight} kg</div>
-            <div className="info">{props.info}</div>
+            {props.info && <div className="info">{props.info}</div>}
             <button
             className="delete"
             onClick={() => props.onDelete(props.id)}>usuń</button>  

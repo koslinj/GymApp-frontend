@@ -1,22 +1,22 @@
 .exercise{
     background-color: rgba(255, 255, 255, 0.247);
     border: 2px solid black;
-    width: 260px;
-    padding: 6px 6px 20px 6px;
-    margin: 10px;
+    width: 240px;
+    padding: 4px 4px 12px 4px;
+    margin: 8px;
     border-radius: 16px;
-    font-size: 20px;
+    font-size: 16px;
 }
 .exercise div{
-    margin-top: 10px;
+    margin-top: 6px;
 }
 .exercise .no{
     background-color: rgba(180, 0, 0, 0.5);
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    margin-bottom: 10px;
-    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-bottom: 4px;
+    font-size: 22px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
     align-items: center;
@@ -34,13 +34,24 @@
 }
 .exercise button{
     margin: 10px 14px 0px 14px;
-    width: 80px;
-    height: 50px;
-    font-size: 24px;
+    width: 68px;
+    height: 36px;
+    font-size: 18px;
     background-color: lightcoral;
     border: none;
     border-radius: 6px;
 }
 .exercise .edit{
     background-color: rgb(35, 83, 255);
+}
+.exercise p{
+    margin: 16px 0px 2px 0px;
+}
+.exercise .save-btn{
+    background-color: lightgreen;
+}
+.exercise input{
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 2px;
 }
