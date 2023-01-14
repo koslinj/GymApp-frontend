@@ -135,6 +135,7 @@ function Exercises() {
             reps={exercise.reps}
             weight={exercise.weight}
             info={exercise.info}
+            training_id={exercise.training_id}
             id={exercise._id}
             onEdit={(ex) => editExerciseHandler(ex)}
             onDelete={(id) => deleteExercise(id)} />
