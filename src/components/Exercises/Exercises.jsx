@@ -12,6 +12,8 @@ function Exercises() {
   const [showEditModal, setShowEditModal] = useState(false)
   const [showNewExercise, setShowNewExercise] = useState(false)
 
+  const [trainingDate, setTrainingDate] = useState("")
+
   const params = useParams();
 
   useEffect(() => {
@@ -22,16 +24,21 @@ function Exercises() {
   async function fetchNotes() {
     const res = await axios.get('/exercises');
     const exers = res.data;
-
     let tab = [];
-  
     exers.forEach(ex => {
       if (ex.training_id === params.id) {
         tab.push(ex);
       }
     });
-
     setExercises(tab);
+
+    const res_tr = await axios.get('/trainings');
+    const trains = res_tr.data;
+    trains.forEach(tr => {
+      if (tr._id === params.id) {
+        setTrainingDate(tr.when);
+      }
+    });
   }
 
   async function deleteExercise(id) {
@@ -109,7 +116,7 @@ function Exercises() {
   return (
     <div className="App">
       <div className='top-side'>
-        <h1>TRENING</h1>
+        <h1>TRENING {trainingDate}</h1>
       </div>
 
       {showEditModal &&
