@@ -2,7 +2,9 @@ import React from "react";
 
 function Training(props) {
 
-    const arr = props.when.split("/");
+    const date = new Date(props.when)
+    const current = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+    const arr = current.split("/");
 
     const table = {
         1: "styczeń",

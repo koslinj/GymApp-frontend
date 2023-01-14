@@ -12,6 +12,7 @@ function Exercise(props) {
             weight: props.weight,
             info: props.info,
             training_id: props.training_id,
+            when: props.when,
             _id: props.id
         }
         console.log(ex)

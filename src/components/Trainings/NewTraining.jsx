@@ -12,7 +12,7 @@ function NewTraining(props) {
 
         const training = {
             title: title,
-            when: date
+            when: current
         }
         props.onAdd(training);
         props.hide();

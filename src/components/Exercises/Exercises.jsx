@@ -13,6 +13,7 @@ function Exercises() {
   const [showNewExercise, setShowNewExercise] = useState(false)
 
   const [trainingDate, setTrainingDate] = useState("")
+  const [dateToDisplay, setDateToDisplay] = useState("")
 
   const params = useParams();
 
@@ -37,6 +38,10 @@ function Exercises() {
     trains.forEach(tr => {
       if (tr._id === params.id) {
         setTrainingDate(tr.when);
+        const current = new Date(tr.when);
+        console.log(current);
+        const dtd = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+        setDateToDisplay(dtd)
       }
     });
   }
@@ -116,7 +121,7 @@ function Exercises() {
   return (
     <div className="App">
       <div className='top-side'>
-        <h1>TRENING {trainingDate}</h1>
+        <h1>TRENING {dateToDisplay}</h1>
       </div>
 
       {showEditModal &&
@@ -143,12 +148,14 @@ function Exercises() {
             weight={exercise.weight}
             info={exercise.info}
             training_id={exercise.training_id}
+            when={trainingDate}
             id={exercise._id}
             onEdit={(ex) => editExerciseHandler(ex)}
             onDelete={(id) => deleteExercise(id)} />
         ))}
         {showNewExercise ?
           <NewExercise
+            when={trainingDate}
             hide={() => setShowNewExercise(false)}
             onAdd={(ex) => addExercise(ex)} /> :
           <button className='new-exercise-button' onClick={() => setShowNewExercise(true)}>+</button>

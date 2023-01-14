@@ -14,17 +14,19 @@ function NewExercise(props) {
     const [info, setInfo] = useState('')
 
     const addNote = () => {
+
         const exercise = {
             name: name,
             sets: sets,
             reps: reps,
             weight: weight,
             info: info,
-            training_id: params.id 
+            training_id: params.id,
+            when: props.when
         }
         props.onAdd(exercise);
         props.hide();
-      }
+    }
 
     return (
         <div className="exercise">
