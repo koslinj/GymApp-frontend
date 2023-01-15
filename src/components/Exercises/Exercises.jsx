@@ -65,7 +65,7 @@ function Exercises() {
       setExercises(all_exercises);
     } catch (err) {
       //NotificationManager.error(err.response.data.message)
-      console.log(error);
+      console.log(err);
     }
 
   }

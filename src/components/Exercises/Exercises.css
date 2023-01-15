@@ -52,11 +52,18 @@
 .exercise{
     background-color: rgba(255, 255, 255, 0.247);
     border: 2px solid black;
-    width: 240px;
+    width: 260px;
     padding: 4px 4px 12px 4px;
     margin: 8px;
     border-radius: 16px;
     font-size: 16px;
+}
+.exercise select{
+    background-color: white;
+    padding: 4px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 4px;
 }
 .exercise div{
     margin-top: 6px;
@@ -92,6 +99,18 @@
     border: none;
     border-radius: 6px;
 }
+.list-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.list-container button{
+    background-color: lightgreen;
+    font-size: 16px;
+    width: 70px;
+    margin: 0px 0px 0px 6px;
+}
 .exercise .edit{
     background-color: rgb(35, 83, 255);
 }
@@ -105,4 +124,12 @@
     font-size: 16px;
     border-radius: 10px;
     padding: 2px;
+}
+.list-container .new-exercise-name-button{
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+    background-color: white;
+    border: 4px solid lightcoral;
+    font-size: 26px;
 }
