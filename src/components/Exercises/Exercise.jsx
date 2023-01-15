@@ -27,10 +27,10 @@ function Exercise(props) {
             <div className="reps">{props.reps} powtórzenia</div>
             <div className="weight">{props.weight} kg</div>
             {props.info && <div className="info">{props.info}</div>}
-            <button
-            className="delete"
-            onClick={() => props.onDelete(props.id)}>usuń</button>  
-            <button onClick={editHandler} className="edit">edytuj</button>   
+            {props.onDelete && <button
+                className="delete"
+                onClick={() => props.onDelete(props.id)}>usuń</button>}
+            {props.onEdit && <button onClick={editHandler} className="edit">edytuj</button>}
         </div>
     );
 }
