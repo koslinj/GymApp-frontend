@@ -6,6 +6,7 @@ import './Trainings.css'
 import Training from "../Trainings/Training"
 import NewTraining from './NewTraining';
 import Exercise from '../Exercises/Exercise';
+import { all } from 'axios';
 
 function Trainings() {
 
@@ -14,6 +15,25 @@ function Trainings() {
     const [showNewTraining, setShowNewTraining] = useState(false)
     const [filteredExercise, setFilteredExercise] = useState("")
     const [listOfExercises, setListOfExercises] = useState([])
+
+    async function deleteExercisesOfDeletedTraining(training_id) {
+        const res = await axios.get('/exercises');
+        const all_exercises = res.data;
+        const arr = all_exercises.filter(ex => ex.training_id === training_id);
+        for (const ex of arr) {
+            console.log(ex);
+            await axios.delete('/exercises/' + ex._id);
+            console.log("cwiczenie",ex._id,"usuniete")
+        }
+    }
+
+    async function deleteTraining(id) {
+        console.log('usuwanie treningu', id);
+        deleteExercisesOfDeletedTraining(id);
+        const tr = [...trainings].filter(trn => trn._id !== id);
+        await axios.delete('/trainings/' + id);
+        setTrainings(tr);
+    }
 
     useEffect(() => {
         fetchTrainings();
@@ -28,7 +48,7 @@ function Trainings() {
     }, [listOfExercises]);
 
     useEffect(() => {
-        fetchExercises();
+        fetchFilteredExercises();
     }, [filteredExercise])
 
     async function fetchTrainings() {
@@ -43,7 +63,7 @@ function Trainings() {
         console.log(list);
         setListOfExercises(list);
     }
-    async function fetchExercises() {
+    async function fetchFilteredExercises() {
         const res = await axios.get('/exercises');
         const exers = res.data;
         let tab = [];
@@ -83,8 +103,10 @@ function Trainings() {
                 {trainings.map((tr, index) => (
                     <Link key={index} style={{ color: 'inherit', textDecoration: 'inherit' }} to={tr._id}><Training
                         key={tr._id}
+                        id={tr._id}
                         title={tr.title}
-                        when={tr.when} />
+                        when={tr.when}
+                        onDelete={(id) => deleteTraining(id)} />
                     </Link>
 
                 ))}
@@ -111,7 +133,7 @@ function Trainings() {
                         const bdate = new Date(b.when).getTime();
                         //console.log(adate);
                         //console.log(bdate);
-                        if(adate > bdate) return 1;
+                        if (adate > bdate) return 1;
                         else return -1;
                     }).map((exercise, index) => (
                         <Exercise

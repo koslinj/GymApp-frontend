@@ -1,9 +1,12 @@
+import { useState } from "react";
 import React from "react";
 
 function Training(props) {
 
+    const [isDeleting, setIsDeleting] = useState(false);
+
     const date = new Date(props.when)
-    const current = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+    const current = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     const arr = current.split("/");
 
     const table = {
@@ -21,6 +24,14 @@ function Training(props) {
         12: "grudzień",
     }
 
+    function handleTrainingDelete(event) {
+        event.preventDefault();
+        if (isDeleting) {
+            props.onDelete(props.id);
+        } else {
+            setIsDeleting(true);
+        }
+    };
 
     // const editHandler = () => {
     //     const ex = {
@@ -40,6 +51,17 @@ function Training(props) {
         <div className="training">
             <p>{arr[0]} {table[arr[1]]} {arr[2]}</p>
             <h3 className="title">{props.title}</h3>
+            {isDeleting ?
+                <div>
+                    <button onClick={handleTrainingDelete} className="training-delete-btn">tak</button>
+                    <button onClick={(event) => {
+                        event.preventDefault()
+                        setIsDeleting(false)
+                    }} className="training-delete-btn">nie</button>
+                </div> :
+                <button className="training-delete-btn" onClick={handleTrainingDelete}>Usuń</button>
+            }
+            {isDeleting && <span>Na pewno?</span>}
         </div>
     );
 }
