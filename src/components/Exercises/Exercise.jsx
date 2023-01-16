@@ -3,6 +3,9 @@ import './Exercises.css'
 
 function Exercise(props) {
 
+    const date = new Date(props.when)
+    const current = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
     const editHandler = () => {
         const ex = {
             no: props.no,
@@ -21,6 +24,7 @@ function Exercise(props) {
 
     return (
         <div className="exercise">
+            {!props.onDelete && <div>{current}</div>}
             <div className="no">{props.no}</div>
             <h3 className="name">{props.name}</h3>
             <div className="sets">{props.sets} serie</div>
