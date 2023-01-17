@@ -5,7 +5,8 @@ import axios from '../../axios';
 import './Trainings.css'
 import Training from "../Trainings/Training"
 import NewTraining from './NewTraining';
-import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar';
+import Layout from './Layout/Layout';
+
 
 function Trainings() {
 
@@ -58,35 +59,6 @@ function Trainings() {
             console.log(err);
         }
 
-    }
-
-
-    function Layout() {
-        const { collapseSidebar, toggleSidebar, toggled } = useProSidebar();
-
-        const toggle = () => {
-            toggleSidebar();
-            if (toggled) {
-              console.log(true);
-              collapseSidebar();
-            } else {
-              console.log(false);
-              collapseSidebar();
-            }
-          };
-
-        return (
-            <div style={{ display: 'flex', height: '100%' }}>
-                <Sidebar
-                    customBreakPoint="600px"
-                    transitionDuration={800}>
-                    <button onClick={() => toggle()}>Collapse</button>
-                    <Menu>
-                        <MenuItem component={<Link to="/progress"/>}> Progress</MenuItem>
-                    </Menu>
-                </Sidebar>
-            </div>
-        );
     }
 
     return (
