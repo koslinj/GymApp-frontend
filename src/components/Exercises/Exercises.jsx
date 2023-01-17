@@ -74,13 +74,6 @@ function Exercises() {
     setEditExercise(ex);
     setShowEditModal(!showEditModal);
   }
-
-  function editName(e) {
-    const n = e.target.value;
-    const ee = editExercise;
-    ee.name = n;
-    setEditExercise(ee);
-  }
   function editSets(e) {
     const n = e.target.value;
     const ee = editExercise;
@@ -119,7 +112,7 @@ function Exercises() {
   }
 
   return (
-    <div className="App">
+    <div className="exercises-component">
       <div className='top-side'>
         <h1>TRENING {dateToDisplay}</h1>
       </div>
@@ -127,7 +120,7 @@ function Exercises() {
       {showEditModal &&
         <div className='edit-exercise'>
           <h3>Ćwiczenie nr: {editExercise.no}</h3>
-          <input defaultValue={editExercise.name} onChange={editName} />
+          <h3 style={{marginTop: "10px"}}>{editExercise.name}</h3>
           <input type="number" defaultValue={editExercise.sets} onChange={editSets} />
           <input type="number" defaultValue={editExercise.reps} onChange={editReps} />
           <input type="number" defaultValue={editExercise.weight} onChange={editWeight} />

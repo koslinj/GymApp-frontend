@@ -1,3 +1,10 @@
+.trainings-component{
+    height: 100vh;
+    display: flex;
+}
+.right-side{
+    width: 100%;
+}
 .trainings-container{
     display: flex;
     flex-wrap: wrap;
@@ -55,4 +62,15 @@
 .training span{
     font-size: 16px;
     color: rgba(255, 255, 255, 0.659);
+}
+@media screen and (max-width: 424px){
+    .trainings-component{
+        flex-wrap: wrap;
+    }
+    .left-side{
+        width: 100%;
+    }
+    .right-side{
+        width: 100%;
+    }
 }
